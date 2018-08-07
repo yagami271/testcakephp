@@ -1,3 +1,8 @@
+<?php
+
+echo $this->Html->link('add', array('controller' => 'students', 'action' => 'add'),
+    array('class' => 'material-icons medium'));
+?>
 <table>
     <thead>
     <tr>
@@ -17,8 +22,8 @@
                 echo $this->Form->postLink(
                     'delete_forever',
                     array('action' => 'delete', $student['Student']['id']),
-                    array('class'=>'material-icons'),
-                    array('confirm' => 'Etes-vous sur de supprimer cette étudiant ?'));
+                    array('confirm' => 'Etes-vous sur de supprimer cette étudiant ?','class'=>'material-icons'));
+
 //
                 ?>
             </td>

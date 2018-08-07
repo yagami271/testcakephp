@@ -13,20 +13,9 @@ class StudentsController extends AppController
 
     public function index()
     {
-        $this->set('students', $this->Student->find('all'));
+        $this->set('students', $this->Student->find('all',array('order' => array('Student.nom'))));
     }
 
-    public function view($id = null)
-    {
-        if (!$id) {
-            throw new NotFoundException(__('Invalid étudiant'));
-        }
-        $student = $this->Student->findById($id);
-        if (!$student) {
-            throw new NotFoundException(__('Invalid étudiant'));
-        }
-        $this->set('student', $student);
-    }
 
     public function add()
     {
