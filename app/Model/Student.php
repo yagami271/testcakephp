@@ -20,5 +20,8 @@ class Student extends AppModel
         )
     );
 
+    public $hasMany = array(
+        'Mark'=>array('className'=>'Mark','dependent'=>true)
+    );
 
 }
