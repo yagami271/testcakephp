@@ -14,7 +14,7 @@ class Lesson extends AppModel
         )
     );
 
-//    public $hasMany = array(
-//        'Mark'=>array('className'=>'Mark','dependent'=>true)
-//    );
+    public $hasMany = array(
+        'Mark'=>array('className'=>'Mark','dependent'=>true)
+    );
 }

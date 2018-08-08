@@ -22,13 +22,14 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		CakePhp test
+        Students App
 	</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<?php
 		//echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('style');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -38,7 +39,17 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>CakePhp App</h1>
+			<h1>Students App </h1>
+            <ul>
+            <?php
+            echo '<li>'.$this->Html->link('Liste étudiants', array('controller' => 'students', 'action' => 'index'),
+                array('class' => '','title'=>'liste étudiant  ')).'</li>';
+
+            echo '<li>'.$this->Html->link('Liste unités d\'enseignements ', array('controller' => 'lessons', 'action' => 'index'),
+                array('class' => '','title'=>'liste étudiant  ')).'</li>';
+
+            ?>
+            </ul>
 		</div>
 		<div id="content">
 

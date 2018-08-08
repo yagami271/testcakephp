@@ -1,3 +1,7 @@
+<?php
+echo $this->Html->link('keyboard_backspace', array('controller' => 'students', 'action' => 'index'),
+    array('class' => 'material-icons','title'=>'Modifier cet étudiant '));
+?>
 <h1>Attribuer une note à <b><?php echo $student['Student']['prenom'].' '. $student['Student']['nom'] ?></b> </h1>
 <?php
 echo $this->Form->create('Mark');

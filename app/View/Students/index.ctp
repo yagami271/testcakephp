@@ -32,7 +32,7 @@ echo $this->Html->link('add', array('controller' => 'students', 'action' => 'add
             </td>
             <td><?php echo $student['Student']['nom'] ?></td>
             <td><?php echo $student['Student']['prenom'] ?></td>
-            <td><?php echo $student['Student']['date_naissance'] ?></td>
+            <td><?php echo $this->Time->format($student['Student']['date_naissance'],'%d-%m-%Y') ?></td>
             <td><?php  echo $this->Html->link('list_alt', array('controller' => 'marks', 'action' => 'notes', $student['Student']['id']),
                     array('class' => 'material-icons','title'=>'Afficher les notes de cet étudiant ')); ?></td>
         </tr>

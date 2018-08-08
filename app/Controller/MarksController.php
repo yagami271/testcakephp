@@ -6,7 +6,11 @@ class MarksController extends AppController
     public $helpers = array('Html', 'Form', 'Flash');
     public $components = array('Flash');
 
-
+    /**
+     * @param $lessons
+     * @return array
+     * Génère un tableau assosiative pour selectionner une lesson
+     */
     private function _customOptions($lessons)
     {
         $options = array();
@@ -16,6 +20,11 @@ class MarksController extends AppController
         return $options;
     }
 
+    /**
+     * @param $mark
+     * @return mixed
+     * Vérifie si une note est déjà attribuer pour une matière X
+     */
     private function _existRow($mark)
     {
         $conditions = array(
@@ -25,6 +34,11 @@ class MarksController extends AppController
         return $this->Mark->hasAny($conditions);
     }
 
+    /**
+     * @param null $id
+     * @return CakeResponse|null
+     * Attribution de la note a un étudiant X
+     */
     public function attribute($id = null)
     {
         $this->loadModel('Student');
@@ -46,7 +60,7 @@ class MarksController extends AppController
         if ($this->request->is('post')) {
             // Ne pas attribuer une note qui existe déjà
             if ($this->_existRow($this->request->data)) {
-                $this->Flash->error(__('Une note est déjà attribuée à cet étudiant !'));
+                $this->Flash->error(__('Une note est déjà attribuée à cet étudiant pour cet matière'));
                 return $this->redirect(array('action' => 'attribute', $id));
             }
             $this->Mark->create();
@@ -60,6 +74,11 @@ class MarksController extends AppController
 
     }
 
+    /**
+     * @param null $id
+     * @return CakeResponse|null
+     * Affichage des notes pour un étudiant X
+     */
     public function notes($id = null){
         if (!$id) {
             throw new NotFoundException(__('Invalid étudiant'));

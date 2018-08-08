@@ -11,11 +11,18 @@ class StudentsController extends AppController
     public $helpers = array('Html', 'Form', 'Flash');
     public $components = array('Flash');
 
+    /**
+     * Afficher la liste des étudiants
+     */
     public function index()
     {
         $this->set('students', $this->Student->find('all',array('order' => array('Student.nom'))));
     }
 
+    /**
+     * @return CakeResponse|null
+     * Ajouter un étudiant
+     */
     public function add()
     {
         if ($this->request->is('post')) {
@@ -28,6 +35,11 @@ class StudentsController extends AppController
         }
     }
 
+    /**
+     * @param null $id
+     * @return CakeResponse|null
+     * Mise à jour étudiant
+     */
     public function edit($id = null)
     {
         if (!$id) {
@@ -50,6 +62,11 @@ class StudentsController extends AppController
         }
     }
 
+    /**
+     * @param null $id
+     * @return CakeResponse|null
+     * Suppression étudiant
+     */
     public function delete($id = null){
         if(!$id){
             throw new NotFoundException(__('Etudiant introuvable'));

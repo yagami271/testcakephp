@@ -1,4 +1,8 @@
-<h1>Ajouter un étudiant</h1>
+<?php
+echo $this->Html->link('keyboard_backspace', array('controller' => 'students', 'action' => 'index'),
+    array('class' => 'material-icons','title'=>'Modifier cet étudiant '));
+?>
+<h1>Mise à jour  un étudiant</h1>
 <?php
 echo $this->Form->create('Student');
 echo $this->Form->input('nom');

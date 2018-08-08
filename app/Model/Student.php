@@ -21,7 +21,7 @@ class Student extends AppModel
     );
 
     public $hasMany = array(
-        'Mark'=>array('className'=>'Mark','dependent'=>true)
+        'Mark'=>array('className'=>'Mark','dependent'=>true) // suppression en cascade
     );
 
 }

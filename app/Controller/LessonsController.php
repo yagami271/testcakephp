@@ -11,12 +11,19 @@ class LessonsController extends AppController
     public $helpers = array('Html', 'Form', 'Flash');
     public $components = array('Flash');
 
+    /**
+     * Afficher la liste des unités d'enseignements
+     */
     public function index()
     {
         $this->set('lessons', $this->Lesson->find('all',array('order' => array('Lesson.libelle'))));
     }
 
 
+    /**
+     * @return CakeResponse|null
+     * Ajouter une unité d'enseinement
+     */
     public function add()
     {
         if ($this->request->is('post')) {
@@ -29,6 +36,11 @@ class LessonsController extends AppController
         }
     }
 
+    /**
+     * @param null $id
+     * @return CakeResponse|null
+     * Mise à jour unité d'enseignement
+     */
     public function edit($id = null)
     {
         if (!$id) {
@@ -51,6 +63,11 @@ class LessonsController extends AppController
         }
     }
 
+    /**
+     * @param null $id
+     * @return CakeResponse|null
+     * Supprimer une unité d'enseignement
+     */
     public function delete($id = null){
         if(!$id){
             throw new NotFoundException(__('Unité d\'enseignement introuvable'));
