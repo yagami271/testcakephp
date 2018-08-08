@@ -60,5 +60,17 @@ class MarksController extends AppController
 
     }
 
+    public function notes($id = null){
+        if (!$id) {
+            throw new NotFoundException(__('Invalid étudiant'));
+        }
+        $student = $this->Mark->find('all',array('conditions'=>array('Mark.student_id'=>$id)));
+        if (!$student) {
+            $this->Flash->error(__('Cet étudiant n\'a pas encore de note '));
+            return $this->redirect(array( 'action' => 'attribute',$id));
+        }
+        $this->set('notes', $student);
+    }
+
 
 }

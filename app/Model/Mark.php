@@ -27,10 +27,9 @@ class Mark extends AppModel
             'rule' => 'notBlank'
         )
     );
+    
+    public $belongsTo = array(
+        'Student', 'Lesson'
+    );
 
-    public $belongsTo = array('Lesson' => array(
-        'className' => 'Lesson'
-    )
-    , 'Student' => array(
-            'className' => 'Student'));
 }

@@ -16,7 +16,6 @@ class StudentsController extends AppController
         $this->set('students', $this->Student->find('all',array('order' => array('Student.nom'))));
     }
 
-
     public function add()
     {
         if ($this->request->is('post')) {
@@ -65,4 +64,6 @@ class StudentsController extends AppController
         }
         return $this->redirect(array('action'=>'index'));
     }
+
+
 }
