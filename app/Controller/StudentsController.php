@@ -25,8 +25,14 @@ class StudentsController extends AppController
      */
     public function add()
     {
+
         if ($this->request->is('post')) {
             $this->Student->create();
+
+            if($this->request->data['Student']['year']>2000 || $this->request->data['Student']['year']<1938 ){
+                $this->Flash->error(__('Erreur date ! '));
+                return $this->redirect(array('action' => 'index'));
+            }
             if ($this->Student->save($this->request->data)) {
                 $this->Flash->success(__('Ajout étudiant avec succès '));
                 return $this->redirect(array('action' => 'index'));
@@ -50,6 +56,10 @@ class StudentsController extends AppController
             throw new NotFoundException(__('Invalid étudiant'));
         }
         if ($this->request->is(array('post', 'put'))) {
+            if($this->request->data['Student']['year']>2000 || $this->request->data['Student']['year']<1938 ){
+                $this->Flash->error(__('Erreur date ! '));
+                return $this->redirect(array('action' => 'index'));
+            }
             $this->Student->id = $id;
             if ($this->Student->save($this->request->data)) {
                 $this->Flash->success(__('Mise à jour étudiant avec succès'));
@@ -57,6 +67,7 @@ class StudentsController extends AppController
             }
             $this->Flash->error(__('Echec Mise à jour étudiant ! '));
         }
+
         if (!$this->request->data) {
             $this->request->data = $student;
         }
