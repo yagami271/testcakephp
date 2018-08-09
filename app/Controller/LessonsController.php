@@ -12,6 +12,20 @@ class LessonsController extends AppController
     public $components = array('Flash');
 
     /**
+     * @param $mark
+     * @return mixed
+     * Check exist ROW
+     */
+    private function _existRow($lesson)
+    {
+        $conditions = array(
+            'Lesson.libelle' => $lesson['Lesson']['libelle']
+        );
+        return $this->Lesson->hasAny($conditions);
+    }
+
+
+    /**
      * Afficher la liste des unités d'enseignements
      */
     public function index()
@@ -27,6 +41,10 @@ class LessonsController extends AppController
     public function add()
     {
         if ($this->request->is('post')) {
+            if($this->_existRow($this->request->data)){
+                $this->Flash->error(__('Exist déjà ! '));
+                return $this->redirect(array('action' => 'index'));
+            }
             $this->Lesson->create();
             if ($this->Lesson->save($this->request->data)) {
                 $this->Flash->success(__('Ajout unité d\'enseignement avec succès '));
