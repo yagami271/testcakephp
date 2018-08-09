@@ -29,7 +29,7 @@ class StudentsController extends AppController
         if ($this->request->is('post')) {
             $this->Student->create();
 
-            if($this->request->data['Student']['year']>2000 || $this->request->data['Student']['year']<1938 ){
+            if($this->request->data['Student']['date_naissance']['year']>2000 || $this->request->data['Student']['date_naissance']['year']<1938 ){
                 $this->Flash->error(__('Erreur date ! '));
                 return $this->redirect(array('action' => 'index'));
             }
@@ -56,7 +56,7 @@ class StudentsController extends AppController
             throw new NotFoundException(__('Invalid étudiant'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if($this->request->data['Student']['year']>2000 || $this->request->data['Student']['year']<1938 ){
+            if($this->request->data['Student']['date_naissance']['year']>2000 || $this->request->data['Student']['date_naissance']['year']<1938 ){
                 $this->Flash->error(__('Erreur date ! '));
                 return $this->redirect(array('action' => 'index'));
             }
