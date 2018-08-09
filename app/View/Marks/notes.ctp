@@ -2,7 +2,7 @@
 echo $this->Html->link('keyboard_backspace', array('controller' => 'students', 'action' => 'index'),
     array('class' => 'material-icons','title'=>'Modifier cet étudiant '));
 ?>
-<h1>La liste des notes de <b><?php echo $notes[0]['Student']['prenom'].' '. $notes[0]['Student']['prenom'] ?> </b> </h1>
+<h1>La liste des notes de <b><?php echo $notes[0]['Student']['prenom'].' '. $notes[0]['Student']['nom'] ?> </b> </h1>
 <table>
     <thead>
     <tr>
