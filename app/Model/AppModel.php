@@ -30,23 +30,5 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
-
-    public function dateRange($check, $range) {
-
-        $strtotime_of_check = strtotime(reset($check));
-        if($range['min']){
-            $strtotime_of_min = strtotime($range['min']);
-            if($strtotime_of_min > $strtotime_of_check) {
-                return false;
-            }
-        }
-
-        if($range['max']){
-            $strtotime_of_max = strtotime($range['max']);
-            if($strtotime_of_max < $strtotime_of_check) {
-                return false;
-            }
-        }
-        return true;
-    }
+    
 }
